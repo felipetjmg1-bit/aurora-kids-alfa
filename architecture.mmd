@@ -1,0 +1,9 @@
+graph TD
+    A[Usuário Menor de 16] -->|Acesso App| B{API Aurora Kids Alfa}
+    B -->|Verifica CPF/Idade| C[Banco de Dados Centralizado]
+    B -->|Verifica Horário| D{Toque de Recolher?}
+    D -->|Sim: 00h-06h| E[Bloqueio de Acesso]
+    D -->|Não| F[Acesso Permitido]
+    E -->|Notificação| G[Painel de Controle Parental]
+    F -->|Conexão| H[Servidor da Plataforma]
+    I[Modo Aurora SO] -->|Restrição Nativa| J[Conectividade de Apps]

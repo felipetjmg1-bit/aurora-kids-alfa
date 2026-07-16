@@ -18,6 +18,9 @@ O **Projeto Aurora Kids Alfa** é uma iniciativa pioneira voltada para a impleme
 ### Story para Instagram
 ![Marketing Story](/home/ubuntu/aurora-kids-alfa/marketing_story.png)
 
+### Arquitetura do Sistema
+![System Architecture](/home/ubuntu/aurora-kids-alfa/architecture.png)
+
 ---
 
 ## 🚀 Pilares Técnicos (Arquitetura "Alfa")
