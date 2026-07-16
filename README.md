@@ -10,6 +10,16 @@ O **Projeto Aurora Kids Alfa** é uma iniciativa pioneira voltada para a impleme
 
 ---
 
+## 🖼️ Imagens de Marketing
+
+### Post para Feed
+![Marketing Post](/home/ubuntu/aurora-kids-alfa/marketing_post.png)
+
+### Story para Instagram
+![Marketing Story](/home/ubuntu/aurora-kids-alfa/marketing_story.png)
+
+---
+
 ## 🚀 Pilares Técnicos (Arquitetura "Alfa")
 
 A solução foi desenhada para ser infalível, integrando-se diretamente ao nível de sistema operacional (SO) e infraestrutura de rede.
@@ -79,4 +89,4 @@ python src/main.py
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ---
-**Desenvolvido com foco na proteção da próxima geração.** 🛡️✨
+**Desenvolvido por Felipe Marcos de Abreu com foco na proteção da próxima geração.** 🛡️✨
