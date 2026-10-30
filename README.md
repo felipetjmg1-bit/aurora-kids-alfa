@@ -1,95 +1,77 @@
-# 🏛️ Projeto Aurora Kids Alfa: Estrutura de Segurança Digital
+![Status: Demonstração](https://img.shields.io/badge/Status-Demonstração-blue) | [![Licença MIT](https://img.shields.io/github/license/felipetjmg1-bit/aurora-kids-alfa)](LICENSE) | [![Patrocinar](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-ea4aaa?logo=githubsponsors)](https://github.com/sponsors/felipetjmg1-bit)
 
-![Aurora Kids Alfa](https://img.shields.io/badge/Status-Prot%C3%B3tipo-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+# Aurora Kids Alfa — API de Regra de Acesso
 
-## 🌟 Visão Geral
+## Visão geral
 
-O **Projeto Aurora Kids Alfa** é uma iniciativa pioneira voltada para a implementação de um protocolo de **"Toque de Recolher Digital"** sistêmico. O objetivo central é proteger o desenvolvimento neuropsicológico e a segurança física de menores de 16 anos, bloqueando automaticamente o acesso a redes sociais e plataformas de entretenimento no período crítico entre **00:00 e 06:00**.
+O conteúdo efetivamente implementado é um protótipo Python/FastAPI de uma API que decide permitir ou negar acesso segundo a idade calculada de um perfil de demonstração e a hora local atual (00:00–06:00). A API usa um usuário em memória; não há implementação no código publicado de verificação de CPF externa, bloqueio de dispositivos/apps, restrição nativa Android/iOS, integração com plataformas ou painel parental, apesar de essas ideias aparecerem no README e no diagrama conceptual.
 
----
+## Objetivo e valor
 
-## 🖼️ Imagens de Marketing
+**Problema/escopo:** Protótipo de API FastAPI que aplica uma regra de toque de recolher digital a perfis de demonstração.
 
-### Post para Feed
-![Marketing Post](/home/ubuntu/aurora-kids-alfa/marketing_post.png)
+**Valor verificável hoje:** o repositório torna explícitos seus artefatos, interfaces e limitações para que mantenedores e contribuidores possam avaliar o que existe sem confundir demonstração, proposta e produção.
 
-### Story para Instagram
-![Marketing Story](/home/ubuntu/aurora-kids-alfa/marketing_story.png)
+## Arquitetura e tecnologias
 
-### Arquitetura do Sistema
-![System Architecture](/home/ubuntu/aurora-kids-alfa/architecture.png)
+Código efetivo pequeno: src/main.py inicia Uvicorn; src/api.py define a app FastAPI, rotas e regra; src/models.py define esquemas Pydantic. Há um dicionário users_db hard-coded, sem banco persistente. O architecture.mmd documenta um fluxo conceptual com banco centralizado, painel parental e modo de SO, elementos não implementados nos módulos publicados; portanto, a arquitetura conceitual está documentada, mas não corresponde à arquitetura executável além do protótipo de API.
 
----
-
-## 🚀 Pilares Técnicos (Arquitetura "Alfa")
-
-A solução foi desenhada para ser infalível, integrando-se diretamente ao nível de sistema operacional (SO) e infraestrutura de rede.
-
-### 1. Aferição de Idade por Protocolo Único
-Sistema de identidade digital vinculado ao CPF, permitindo que plataformas validem a idade via API centralizada de forma segura e privada.
-
-### 2. Bloqueio em Nível de API
-Integração de uma **"Flag de Proteção"** nas APIs das desenvolvedoras. Perfis identificados como menores de 16 anos recebem bloqueio automático de acesso ao servidor durante o horário restrito.
-
-### 3. Modo "Aurora"
-Estado nativo de sistema (Android/iOS) que restringe a conectividade de apps não essenciais, mantendo apenas utilitários de emergência (Mapas, Chamadas Familiares).
-
----
-
-## 🛡️ Diferenciais de Segurança
-
-| Recurso | Descrição |
-| :--- | :--- |
-| **Privacidade** | O sistema não monitora conteúdo, apenas valida faixa etária e horário. |
-| **Transparência** | Painel de controle parental com notificações de tentativas de violação. |
-| **Emergência** | Exceções dinâmicas para apps de utilidade pública e segurança física. |
-
----
-
-## 🛠️ Estrutura do Repositório
-
-```text
-aurora-kids-alfa/
-├── src/
-│   ├── api.py          # Implementação da API de validação
-│   ├── models.py       # Modelos de dados Pydantic
-│   ├── main.py         # Ponto de entrada da aplicação
-│   └── utils.py        # Funções auxiliares de tempo e segurança
-├── tests/              # Testes automatizados
-├── requirements.txt    # Dependências do projeto
-└── README.md           # Documentação principal
+```mermaid
+flowchart LR
+  C[Cliente HTTP] --> F[FastAPI]
+  F --> P[Modelos Pydantic]
+  P --> R[Regra local e dados em memória]
+  R --> C
 ```
 
----
+- Python (linguagem identificada pelo GitHub; arquivos em src/).
+- FastAPI e Uvicorn; o entrypoint executa uvicorn.run para api:app em 0.0.0.0:8000.
+- Pydantic para os modelos UserProfile, AccessRequest e AccessResponse.
+- requirements.txt lista fastapi, uvicorn, pydantic, pytest e httpx; versões não estão fixadas.
+- architecture.mmd é um diagrama Mermaid; GitHub contabiliza Python e Mermaid.
 
-## 📈 Estratégia de Implementação
+## Início rápido
 
-1. **Marco Legal**: Proposta de evolução do ECA Digital.
-2. **PPP**: Consórcio com Google, Meta e fabricantes de hardware.
-3. **Auditoria**: Comitê independente para fiscalização algorítmica.
+Os comandos abaixo refletem instruções, manifestos ou pontos de entrada presentes no repositório. Dependências externas, segredos e serviços estão indicados quando aplicável; a presença de um comando não equivale a uma execução validada.
 
----
+1. Clone com a URL real do repositório: git clone https://github.com/felipetjmg1-bit/aurora-kids-alfa.git
+2. Entre no diretório: cd aurora-kids-alfa
+3. Instale as dependências listadas: pip install -r requirements.txt
+4. Inicie usando o entrypoint existente: python src/main.py (o código configura Uvicorn na porta 8000).
+5.
 
-## 💻 Como Executar o Protótipo
+
+## Exemplo de uso
+
+A API expõe `POST /validate-access` (campos `user_id` e `app_id`) e `GET /health`. Exemplo com o perfil local de demonstração:
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/seu-usuario/aurora-kids-alfa.git
-
-# Instalar dependências
-pip install -r requirements.txt
-
-# Iniciar a API
-python src/main.py
+curl -X POST http://127.0.0.1:8000/validate-access \
+  -H 'Content-Type: application/json' \
+  -d '{"user_id":"user123","app_id":"demo"}'
 ```
 
----
+A decisão usa a idade calculada e o relógio local do servidor. Não há verificação externa de identidade; consulte as limitações antes de usar com dados reais.
 
-## 📄 Licença
+## Estado e limitações
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+**Maturidade indicada:** Demonstração.
 
----
-**Desenvolvido por Felipe Marcos de Abreu com foco na proteção da próxima geração.** 🛡️✨
+- Não descrever o protótipo como mecanismo real de proteção, bloqueio de rede ou restrição de sistema operacional: o código publicado só responde a uma decisão de API e mantém os dados em memória.
+- O CPF e nome no registro de exemplo têm formato de dados pessoais; não reutilizar como credencial nem tratá-los como prova de validação. Não há autenticação/autorização visível nas rotas.
+- A regra consulta datetime.now() local; não usa o timestamp enviado na solicitação nem documenta fuso horário. O campo is_minor do modelo não é usado na decisão; a idade é calculada de birth_date.
+- README diz protótipo e recomenda Python 3.10+, mas execução, compatibilidade e testes não foram confirmados na revisão estática do repositório; arquivo de teste está vazio.
+
+## Contribuição
+
+Leia [CONTRIBUTING.md](CONTRIBUTING.md) antes de abrir uma issue ou pull request. Para reportes de segurança, siga a orientação específica do repositório, se houver.
+
+## Licença
+
+Este repositório está licenciado sob **MIT**; consulte [LICENSE](LICENSE).
+
+## Patrocínio e apoio
+
+O desenvolvimento aberto exige tempo para manutenção, documentação, testes, revisão de contribuições e resposta a issues. Se este projeto for útil, considere apoiar a continuidade pelo [GitHub Sponsors](https://github.com/sponsors/felipetjmg1-bit). O apoio não representa promessa de funcionalidades, prazo de entrega ou suporte comercial.
+
+[![Patrocinar felipetjmg1-bit](https://img.shields.io/badge/Patrocinar%20no-GitHub%20Sponsors-ea4aaa?logo=githubsponsors)](https://github.com/sponsors/felipetjmg1-bit)
