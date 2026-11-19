@@ -11,8 +11,7 @@ app = FastAPI(title="Aurora Kids Alfa API", description="Protocolo de Segurança
 users_db = {
     "user123": UserProfile(
         id="user123",
-        name="João Silva",
-        cpf="123.456.789-00",
+        name="Usuário de demonstração",
         birth_date=datetime(2012, 5, 20),
         is_minor=True
     )
