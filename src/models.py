@@ -5,7 +5,6 @@ from typing import Optional
 class UserProfile(BaseModel):
     id: str
     name: str
-    cpf: str
     birth_date: datetime
     is_minor: bool = False
 
