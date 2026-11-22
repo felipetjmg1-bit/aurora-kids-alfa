@@ -7,11 +7,11 @@
 
 ## Visão geral
 
-O conteúdo efetivamente implementado é um protótipo Python/FastAPI de uma API que decide permitir ou negar acesso segundo a idade calculada de um perfil de demonstração e a hora local atual (00:00–06:00). A API usa um usuário em memória; não há implementação no código publicado de verificação de CPF externa, bloqueio de dispositivos/apps, restrição nativa Android/iOS, integração com plataformas ou painel parental, apesar de essas ideias aparecerem no README e no diagrama conceptual.
+O conteúdo efetivamente implementado é um API Python/FastAPI em desenvolvimento de uma API que decide permitir ou negar acesso segundo a idade calculada de um perfil de demonstração e a hora local atual (00:00–06:00). A API usa um usuário em memória; não há implementação no código publicado de verificação de CPF externa, bloqueio de dispositivos/apps, restrição nativa Android/iOS, integração com plataformas ou painel parental, apesar de essas ideias aparecerem no README e no diagrama conceptual.
 
 ## Objetivo e valor
 
-**Problema/escopo:** Protótipo de API FastAPI que aplica uma regra de toque de recolher digital a perfis de demonstração.
+**Problema/escopo:** API FastAPI de demonstração que aplica uma regra de toque de recolher digital a perfis de demonstração.
 
 **Valor verificável hoje:** o repositório torna explícitos seus artefatos, interfaces e limitações para que mantenedores e contribuidores possam avaliar o que existe sem confundir demonstração, proposta e produção.
 
